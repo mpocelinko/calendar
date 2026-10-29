@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: mikes-calendar
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: 24
+      - key: CALENDAR_TIME_ZONE
+        value: America/New_York
+      - key: APP_PASSPHRASE
+        sync: false
+      - key: ICLOUD_USERNAME
+        sync: false
+      - key: ICLOUD_APP_PASSWORD
+        sync: false
+      - key: ICLOUD_CALENDAR_NAME
+        sync: false
